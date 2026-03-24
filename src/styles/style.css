@@ -131,28 +131,28 @@ a:hover {
 /* Unika bilder och färger för varje undersida */
 /* !important används för att tvinga igenom färgen */
 .bg-hem {
-    background-image: url('hem.png');
+    background-image: url('/hem.png');
 }
 .color-hem {
     background-color: #DFD1B8 !important;
 }
 
-.bg-om-oss { background-image: url('om-oss.png'); }
+.bg-om-oss { background-image: url('/om-oss.png'); }
 .color-om-oss {
     background-color: #A18D6F !important;
 }
 
-.bg-hundar { background-image: url('mina-hundar.png'); }
+.bg-hundar { background-image: url('/mina-hundar.png'); }
 .color-hundar {
     background-color: #CAC9C9 !important;
 }
 
-.bg-valpar { background-image: url('valpar.png'); }
+.bg-valpar { background-image: url('/valpar.png'); }
 .color-valpar {
     background-color: #AC9A88 !important;
 }
 
-.bg-kontakt { background-image: url('kontakt.png'); }
+.bg-kontakt { background-image: url('/kontakt.png'); }
 .color-kontakt {
     background-color: #4E3F24 !important;
 }
