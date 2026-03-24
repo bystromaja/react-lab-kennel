@@ -5,7 +5,7 @@ import ImageSlider from './components/ImageSlider';
 
 class Valpar extends Component {
   render() {
-    // Här definierar vi bildspelen precis som i dina gamla JS-filer
+    // define the image arrays for the sliders
     const bernerValpar = [
         "valp1Ha.png", 
         "valp2Ha.png", 

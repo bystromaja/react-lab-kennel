@@ -3,7 +3,7 @@ import { Component } from 'react';
 class RandomDogBox extends Component {
   constructor(props) {
     super(props);
-    // Vi väljer en slumpmässig hund direkt vid start
+    // Choose a random dog from the list when the component is created
     const randomIndex = Math.floor(Math.random() * this.props.dogList.length);
     
     this.state = {
@@ -11,7 +11,7 @@ class RandomDogBox extends Component {
     };
   }
 
-  // Logiken för att slumpa en ny hund
+  // The logic to pick a new random dog every 5 seconds
   randomize = () => {
     const { dogList } = this.props;
     const randomIndex = Math.floor(Math.random() * dogList.length);
@@ -20,20 +20,19 @@ class RandomDogBox extends Component {
     });
   }
 
-  // Reacts motsvarighet till window.onload
   componentDidMount() {
-    // Om vi har skickat in en delay-prop (som för din andra box)
+    // A delay before starting the randomization
     if (this.props.startDelay) {
       this.timeout = setTimeout(() => {
         this.interval = setInterval(this.randomize, 5000);
       }, this.props.startDelay);
     } else {
-      // Annars startar vi direkt
+      // Otherswise, start immediately
       this.interval = setInterval(this.randomize, 5000);
     }
   }
 
-  // VIKTIGT: Rensa timers när komponenten tas bort för att undvika krascher
+  // Clear the interval and timeout when the component is unmounted to prevent memory leaks
   componentWillUnmount() {
     clearInterval(this.interval);
     clearTimeout(this.timeout);

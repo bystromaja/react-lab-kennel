@@ -399,26 +399,25 @@ a:hover {
     background-color: #635235;
 }
 
-/* Standardutseendet på dina inputs */
+/* Standardutseendet på inputs */
 .form-grupp input,
 .form-grupp textarea,
 .form-grupp select {
-    transition: all 0.3s ease; /* Så färgändringen blir mjuk */
+    transition: all 0.3s ease;
     border: 1px solid #ccc;
 }
 
-/* --- När man klickar i ett fält (focus) --- */
 .form-grupp input:focus,
 .form-grupp textarea:focus,
 .form-grupp select:focus {
-    border-color: #654d27; /* Din kennel-gul-färg? */
-    background-color: #d9d0b2; /* Svag gul bakgrund */
+    border-color: #654d27;
+    background-color: #d9d0b2;
     outline: none;
 }
 
-/* --- När React lägger till .form-submitted (När man klickar på Skicka) --- */
+/* När React lägger till .form-submitted */
 .kontakt-container.form-submitted {
-    background-color: #d4edda; /* Svag grön bakgrund */
+    background-color: #d4edda;
     border-color: #c3e6cb;
     color: #155724;
     padding: 30px;

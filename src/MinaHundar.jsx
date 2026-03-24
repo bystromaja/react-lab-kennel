@@ -5,7 +5,7 @@ import RandomDogBox from './components/RandomDogBox';
 
 class MinaHundar extends Component {
   render() {
-    // Dina listor från random1.js och random2.js
+    // Lists from random1.js and random2.js
     const vuxnaHundar = [
         { name: "ALVA", image: "1alva.png" },
         { name: "AMBRA", image: "1ambra.png" },

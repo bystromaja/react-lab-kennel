@@ -6,21 +6,18 @@ class Kontakt extends Component {
   constructor(props) {
     super(props);
     
-    // STATE: Här definierar vi komponentens interna minne.
+    // Define our state, which includes both the form data and the new isDogRunning flag
     this.state = {
-      // --- State för kontaktformuläret ---
       namn: '',
       email: '',
       amne: 'valp',
       meddelande: '',
-      submitted: false, // Håller koll på om vi ska visa färgändringen
+      submitted: false, 
 
-      // --- State för dina springande hundar (NYTT) ---
-      isDogRunning: false // Motsvarar let isDogRunning = false i din gamla kod
+      isDogRunning: false
     };
   }
 
-  // --- FUNKTIONER FÖR FORMULÄRET (som förut) ---
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -29,38 +26,34 @@ class Kontakt extends Component {
   }
 
   handleSubmit = (event) => {
-    event.preventDefault(); // Hindra sidan från att laddas om
+    event.preventDefault(); // Prevent the default form submission behavior (page reload)
     console.log('Skickar data:', this.state);
     
-    // Triggar färgförändringen genom att ändra state
+    // Starts the "submitted" state
     this.setState({ submitted: true });
   }
 
-  // --- NY FUNKTION: Logiken för dina springande hundar ---
   handleTableMouseOver = () => {
-    // 1. Guard: Om det redan rullar en gif, avbryt
+    // If running, do nothing
     if (this.state.isDogRunning) return; 
     
-    // 2. Action: kör den, nu springer en hund (byta state till true)
+    // They are running
     console.log("Hundarna springer!");
     this.setState({ isDogRunning: true }); 
     
-    // 3. Städa upp (motsvarar din setTimeout)
-    // Spara timern i en variabel (this.dogTimer) så vi kan städa bort den senare.
+    // Clean up after 4 seconds
     this.dogTimer = setTimeout(() => {
-        // Nollställ flaggan: hundarna har sprungit klart
         this.setState({ isDogRunning: false });
-    }, 4000); // 4 sekunder
+    }, 4000);
   }
 
-  // VIKTIGT: Rensa timern om användaren lämnar sidan!
-  // Detta förhindrar memory leaks och att sidan kraschar.
+  // prevent memory leaks
   componentWillUnmount() {
     clearTimeout(this.dogTimer);
   }
 
   render() {
-    // Vi skapar ett klassnamn baserat på om submitted är true (för färgändringen)
+    // Create a dynamic class name for the form container based on whether the form has been submitted or not
     const formClass = this.state.submitted ? 'kontakt-container form-submitted' : 'kontakt-container';
 
     return (
@@ -72,11 +65,11 @@ class Kontakt extends Component {
         </main>
 
         <section className="kontakt-sektion">
-            {/* Vi använder formClass för att dynamiskt ändra styling */}
+            {/* use the dynamic class name */}
             <div className={formClass}>
                 <h2>KONTAKTA OSS</h2>
                 
-                {/* Om submitted är false, visa formuläret */}
+                {/* If the form hasn't been submitted, show the form */}
                 {!this.state.submitted && (
                     <>
                         <p>Har du frågor om våra hundar eller är intresserad av en valp? Skicka ett meddelande!</p>

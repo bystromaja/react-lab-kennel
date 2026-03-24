@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/style.css'; 
 
-// Importera alla dina 5 sidor
+// Import all five pages
 import HomePage from './HomePage';
 import OmOss from './OmOss';
 import MinaHundar from './MinaHundar';

@@ -3,7 +3,7 @@ import { Component } from 'react';
 class ImageSlider extends Component {
   constructor(props) {
     super(props);
-    // STATE: Håller koll på vilken bild som visas just nu (index)
+    // Statte: current image index
     this.state = { currentIndex: 0 };
   }
 
