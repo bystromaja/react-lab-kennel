@@ -1,0 +1,910 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*Sätter grunden för box-sizing*/
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+/* Gör hela sidan till en grid för att kunna placera header, main och footer */
+.grid-container {
+    display: grid;
+
+    /* auto = anpassar sig efter innehåll, 1fr = tar resten av platsen */
+    grid-template-rows: auto 1fr auto; 
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+/* Gör själva headern till en flexbox för att separera logon och menyn */
+header {
+    background-color: #4E3F24;
+    padding: 10px 40px; 
+    display: flex;
+    /* Skickar logon till vänster och nav till höger */
+    justify-content: space-between; 
+    align-items: center; 
+
+    /* Gör att den "fastnar" vid scroll */
+    position: sticky;   
+    top: 0;             
+    z-index: 1000;      
+}
+
+/* Tar bort list-punkter och lägg länkarna på en rad */
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Snygga till länkarna */
+header nav ul li a {
+    color: aliceblue;
+    /* Tar bort understrykningen */
+    text-decoration: none; 
+    font-weight: bold;
+}
+
+/*ändra färg när man håller musen över */
+header nav ul li a:hover {
+    color: #A18D6F;
+}
+
+.logo {
+    color: aliceblue;
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main {
+    /* Bilden täcker hela ytan */
+    background-size: cover; 
+    background-position: center;
+    padding: 50px;
+    color: white;
+    /* Bilden täcker stor del av skärmen */
+    min-height: 70vh; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    text-align: center;
+    width: 100%;
+}
+
+/* Gör knappen snyggare 
+#helloBtn {
+    width: 150px;
+    height: 40px;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer; 
+} */
+
+/* Stor text för rubrikerna */
+main h1 {
+    font-size: 8em;
+    margin: 0;
+    text-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+/*Snyggar till länken*/
+a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #333;
+}
+
+/* Gemensam stil för bild-sliderna */
+.slider-sektion, .slider-container {
+    padding: 60px 5%;
+    align-items: center;
+}
+
+.slider-sektion, .slider-container, .info-sektion {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Se till att färgklasserna täcker allt */
+.color-valpar, .color-hundar, .color-hem, .color-om-oss {
+    display: block; 
+    width: 100%;
+}
+
+/* Unika bilder och färger för varje undersida */
+/* !important används för att tvinga igenom färgen */
+.bg-hem {
+    background-image: url('hem.png');
+}
+.color-hem {
+    background-color: #DFD1B8 !important;
+}
+
+.bg-om-oss { background-image: url('om-oss.png'); }
+.color-om-oss {
+    background-color: #A18D6F !important;
+}
+
+.bg-hundar { background-image: url('mina-hundar.png'); }
+.color-hundar {
+    background-color: #CAC9C9 !important;
+}
+
+.bg-valpar { background-image: url('valpar.png'); }
+.color-valpar {
+    background-color: #AC9A88 !important;
+}
+
+.bg-kontakt { background-image: url('kontakt.png'); }
+.color-kontakt {
+    background-color: #4E3F24 !important;
+}
+
+/* Skapar två lika stora kollumner för bild och text */
+.info-sektion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 60px 10%;
+    align-items: center;           
+}
+
+/* Text-rutan åt vänster */
+.text-ruta {
+    color: #333;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+/* Rundade hörn för att mathca prototypen */
+.bild-ruta img {
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+/* Lägger videon i mitten av sidan */
+.video-sektion {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.video-sektion h2 {
+    color: #4E3F24;
+    margin-bottom: 20px;
+}
+
+/* ger även videon rundade hörn */
+.video-container {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Text för videon  */
+.video-text {
+    margin-top: 15px;
+    color: #555;
+    font-style: italic;
+}
+
+/* kapar en asymmetrisk grid-layout för text och slider */
+.slider-sektion {
+    display: grid;
+    grid-template-columns: 4fr 6fr; 
+    gap: 20px;
+    align-items: center;
+    padding: 60px 5%; 
+}
+
+/* Centrerar allt innehåll horisontellt */
+.slider-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+/* Ordnar placeringen på bild och prickar */
+.slider-container-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Skapar en grid med två kolumner för bildspelen */
+.dubbel-slider-sektion {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Delar skärmen i två lika stora delar */
+    gap: 40px; /* Avstånd mellan bildspelen */
+    padding: 60px 5%;
+    align-items: start;
+}
+
+/* Gör bilderna större */
+.dubbel-slider-sektion .slide img {
+    width: 75%;
+    max-width: 800px; 
+    height: 500px; 
+    object-fit: cover; 
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Wrapper för "mina hundar" */
+.slider-wrapper1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 1200px;
+    width: 100%;      
+    margin: 0 auto;
+}
+
+/* Wrapper för valparna */
+.slider-wrapper2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Gör bilden inuti slider 2 så stor som möjligt */
+.slider-wrapper2 .slide img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Säkerställer att bilden inte blir mosad */
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    display: block;
+}
+
+
+/* Namn på hundarna vid bilden */
+.caption {
+    margin-top: 20px;
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+/* Pilarna i slidern */
+.prev-btn, .next-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    color: #4E3F24;
+}
+
+/* Prickarna under slidern */
+.dots {
+    margin-top: 20px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.dot.active {
+    opacity: 1; /* Den aktiva pricken är helt synlig */
+}
+
+/* Kontaktformulär i kontakt, centrerat på sidan */
+.kontakt-sektion {
+    padding: 60px 10%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Det vita rutan som formuläret ligger i */
+.kontakt-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    
+    /* Skugga bakom för att öka läsligheten */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Rubriken */
+.kontakt-container h2 {
+    color: #4E3F24;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Grupperar label och input så att de hänger ihop */
+.form-grupp {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-grupp label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Gemensam stil för alla typer av inmatningsfält */
+.form-grupp input, 
+.form-grupp textarea, 
+.form-grupp select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Skicka-knappen */
+.skicka-btn {
+    background-color: #4E3F24;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: bold;
+    /* Visar en hand-ikon när man håller musen över */
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.skicka-btn:hover {
+    background-color: #635235;
+}
+
+/* Standardutseendet på dina inputs */
+.form-grupp input,
+.form-grupp textarea,
+.form-grupp select {
+    transition: all 0.3s ease; /* Så färgändringen blir mjuk */
+    border: 1px solid #ccc;
+}
+
+/* --- När man klickar i ett fält (focus) --- */
+.form-grupp input:focus,
+.form-grupp textarea:focus,
+.form-grupp select:focus {
+    border-color: #654d27; /* Din kennel-gul-färg? */
+    background-color: #d9d0b2; /* Svag gul bakgrund */
+    outline: none;
+}
+
+/* --- När React lägger till .form-submitted (När man klickar på Skicka) --- */
+.kontakt-container.form-submitted {
+    background-color: #d4edda; /* Svag grön bakgrund */
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 30px;
+    border-radius: 8px;
+    transition: background-color 0.5s ease;
+}
+
+.kontakt-container.form-submitted h2 {
+    color: #155724;
+}
+
+.success-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Tabell för stamtavla, kontakt */
+.tabell-sektion {
+    padding: 40px 10%;
+    text-align: center;
+    background-color: #fff;
+}
+
+/* Rubrik */
+.tabell-sektion h2 {
+    color: #4E3F24;
+    margin-bottom: 20px;
+}
+
+/* Container för att hantera scrollning */
+.tabell-container {
+     /*Gör tabellen skrollbar i sidled om skärmen är liten */
+    overflow-x: auto;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Design för tabellen */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Tabellhuvud */
+th {
+    background-color: #4E3F24; 
+    color: white;
+    /* Stora bokstäver för lättare läsning */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Tar bort linjen under sista raden för snyggare avslut */
+tr:last-child td {
+    border-bottom: none; 
+}
+
+/* Samma som headern för design */
+footer {
+    background-color: #4E3F24;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ta bort list-punkter och lägg länkarna på en rad */
+footer nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+footer nav ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+footer nav ul li a:hover {
+    color: #A18D6F
+}
+
+
+/* Placering och storlek på dogsrun.gif */
+.running-dog {
+    position: absolute;
+    bottom: 38px;
+    left: -200px;
+    width: 400px;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+/* her igång funktionen */
+.animate-run {
+    animation: runAcross 4s linear forwards;
+}
+
+/* Från vänster till höger */
+@keyframes runAcross {
+    0% {
+        left: -200px; 
+    }
+    100% {
+        left: 100vw;
+    }
+}
+
+/* Ikonen nere i hörnet som man klickar på */
+#oppna-spel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4E3F24;
+    color: white;
+    padding: 15px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-weight: bold;
+}
+
+/* Den mörka bakgrunden som täcker hela sidan */
+#spel-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Krysset för att stänga modalen */
+#stang-spel {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: #4E3F24;
+}
+
+.spel-sektion {
+    text-align: center;
+    background-color: #DFD1B8;
+    border-radius: 20px;
+    position: relative;
+    width: 90%;
+    max-width: 650px;
+}
+
+#hund-spel {
+    position: relative;
+    height: 300px;
+    background-color: #DFD1B8;
+    border-radius: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    border: 3px dashed #A18D6F;
+    overflow: hidden;
+}
+
+/* hunden bakom skålen */
+#spel-hund {
+    position: absolute;
+    bottom: 20px;
+    right: -30px;
+    height: 240px;
+    width: auto;
+    z-index: 0;
+}
+
+#pratbubbla {
+    display: none; /* Visas med JS när man vunnit */
+    position: absolute;
+    top: 40px;
+    right: 140px;
+    background: white;
+    padding: 12px 18px;
+    border-radius: 20px;
+    border: 2px solid #4E3F24;
+    z-index: 20;
+    font-weight: bold;
+    color: #4E3F24;
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.1));
+}
+
+/* Den lilla pilen under pratbubblan */
+#pratbubbla::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 30px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: white transparent;
+}
+
+.ben {
+    position: absolute;
+    font-size: 3rem;
+    cursor: grab;
+    z-index: 10;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#ben1 { top: 20px; left: 20px; }
+#ben2 { top: 80px; left: 100px; }
+#ben3 { top: 40px; left: 180px; }
+
+#skal {
+    width: 130px;
+    height: 60px;
+    background: #4E3F24;
+    border-radius: 10px 10px 50px 50px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset 0 -10px 10px rgba(0,0,0,0.5);
+    transition: background-color 0.3s ease;
+    z-index: 5;
+}
+
+#spel-meddelande {
+    font-size: 1.5rem;
+    color: #4E3F24;
+    font-weight: bold;
+    display: none;
+    margin-top: 20px;
+}
+
+#spela-igen {
+    display: none;
+    margin: 5px auto 15px;
+    padding: 10px 20px;
+    background-color: #4E3F24;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#hamburger-ikon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#hamburger-ikon span {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+/* snurrande kvadraten*/
+.canvas-sektion {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #A18D6F;
+    margin-bottom: 0;
+}
+
+#minCanvas {
+    background-color: #A18D6F;
+    border-radius: 15px;
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+
+
+
+/* När skärmen är mindre än 600px, tex en mobil */
+@media (max-width: 600px) {
+
+    header nav ul#nav-meny {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #4E3F24;
+        padding: 0;
+        z-index: 998;
+        border-bottom: 2px solid #4E3F24;
+    }
+
+#hamburger-ikon {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        
+        z-index: 9999;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    #nav-meny.open {
+        display: flex; /* Visar menyn när klassen 'open' läggs till av React */
+    }
+
+    /* Fixa den stora rubriken */
+    main h1 {
+        font-size: 3rem; 
+    }
+
+    /* Stapla alla sektioner på höjden */
+    .info-sektion, .slider-sektion {
+        grid-template-columns: 1fr; 
+        padding: 40px 5%;
+        text-align: center;
+    }
+
+    /* Centrera text i rutorna */
+    .text-ruta {
+        text-align: center;
+    }
+
+    /* Gör headern mobilvänlig */
+    header, footer {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    header nav ul, footer nav ul {
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    /* Se till att bilder inte går utanför skärmen */
+    .bild-ruta img {
+        width: 100%;
+    }
+
+    /* Gör så att dubbel-slidern staplas på höjden */
+    .dubbel-slider-sektion {
+        grid-template-columns: 1fr;
+        padding: 40px 5%;
+        gap: 30px;
+    }
+
+    /* Gör bilderna i dubbel-slidern mindre */
+    .dubbel-slider-sektion .slide img {
+        width: 100%; 
+        max-width: 100%;
+        height: 300px;
+    }
+
+    /* Videon går inte utanför skärmen */
+    video {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Inga fasta mått för video-containern */
+    .video-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* Gör slider-sektionen till en kollumn*/
+    .slider-sektion {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 5%;
+    }
+
+    /* Anpassa formuläret */
+    .kontakt-sektion {
+    padding: 20px 5%;
+    }
+
+    .kontakt-container {
+        padding: 20px;
+        border-radius: 10px;
+        }
+
+    .skicka-btn {
+        padding: 12px;
+        }
+
+    /* Anpassa tabellen */
+    .tabell-sektion {
+        padding: 20px 0;
+    }
+
+    /* Minska avståndet inuti raderna på tabellen*/
+    th, td {
+        padding: 10px 5px;
+        font-size: 0.8rem;
+    }
+
+    /* Möjliggör skrollning i tabellen */
+    .tabell-container {
+        width: 100vw;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Gör själva modalen lite smalare så den inte nuddar skärmkanten */
+    .spel-sektion {
+        width: 95%;
+        padding: 20px 10px;
+    }
+
+    /* Gör spelplanen mindre så den garanterat får plats */
+    #hund-spel {
+        height: 250px;
+        max-width: 100%;
+    }
+
+    /* Gör hunden lite mindre så den inte tar upp hela rutan */
+    #spel-hund {
+        height: 160px;
+        right: -10px;
+    }
+
+    /* Justera skålens position */
+    #skal {
+        width: 100px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Flytta benen så de inte startar utanför den mindre rutan */
+    #ben1 { top: 10px; left: 10px; font-size: 2.5rem; }
+    #ben2 { top: 50px; left: 60px; font-size: 2.5rem; }
+    #ben3 { top: 20px; left: 110px; font-size: 2.5rem; }
+
+    /* Flytta pratbubblan så den inte hamnar utanför skärmen */
+    #pratbubbla {
+        top: 10px;
+        right: 80px;
+        font-size: 0.9rem;
+    }
+}
